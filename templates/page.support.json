@@ -1,0 +1,111 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "show_title": true,
+        "page_width": "medium"
+      }
+    },
+    "rich_text_VGnUWw": {
+      "type": "rich-text",
+      "settings": {
+        "subheading": "",
+        "title": "CONTACT US",
+        "content": "<p>EMAIL:<br/><a href=\"mailto:support@MotleyUSA.com\" title=\"mailto:support@MotleyUSA.com\">Support@MotleyUSA.com<br/><br/></a>PHONE:<br/><a href=\"tel:+18882731664\" title=\"tel:+18882731664\">1-888-273-1664</a></p>",
+        "button_text": "",
+        "button_link": "",
+        "background_type": "full_width",
+        "text_width": "medium",
+        "text_position": "center",
+        "text_alignment": "center",
+        "background": "rgba(0,0,0,0)",
+        "text_color": "rgba(0,0,0,0)",
+        "button_background": "rgba(0,0,0,0)",
+        "button_text_color": "rgba(0,0,0,0)"
+      }
+    },
+    "faq_r3nwNG": {
+      "type": "faq",
+      "blocks": {
+        "category_bKBgVJ": {
+          "type": "category",
+          "settings": {
+            "title": "ORDERS"
+          }
+        },
+        "question_hJqAGU": {
+          "type": "question",
+          "settings": {
+            "title": "What if I need to cancel or change my order?",
+            "answer": "<p>All orders placed on MotleyUSA.com are processed quickly. We will do our best to accommodate your requests. The fastest way to do this is to contact us is by emailing: Support@MotleyUSA.com or call<a href=\"tel:+18882731664\">1-888-273-1664</a>. When emailing please put “Change Order” in the subject line.</p>"
+          }
+        },
+        "question_mRxzN7": {
+          "type": "question",
+          "settings": {
+            "title": "How long will it take to get my order?",
+            "answer": "<p>All items will be shipped the same day or next business day. Our shipping methods include: UPS, FedEx or USPS. Please allow a reasonable amount of processing and shipping times. This usually occurs within 7 days of purchase depending on your shipping region.</p>"
+          }
+        },
+        "question_CY8rgy": {
+          "type": "question",
+          "settings": {
+            "title": "What's the status of my order?",
+            "answer": "<p>After you place your order, you will receive an email confirmation from our website. When you order has been shipped you will receive and email (or a text message) with your tracking number. You can use the tracking number to get the most up to date information. If you have any questions, please email us at: Support@MotleyUSA.Com</p>"
+          }
+        },
+        "question_FpTib3": {
+          "type": "question",
+          "settings": {
+            "title": "How do I set up an exchange or return?",
+            "answer": "<p>To exchange or set up a return, please contact Customer Service at:<a href=\"mailto:support@MotleyUSA.com\" title=\"mailto:support@MotleyUSA.com\">Support@MotleyUSA.com</a>They will give you Return Authorization Number. </p>"
+          }
+        },
+        "category_QjgAHA": {
+          "type": "category",
+          "settings": {
+            "title": "WARRANTY & RETURNS"
+          }
+        },
+        "question_38DDBX": {
+          "type": "question",
+          "settings": {
+            "title": "What is your Return & Warranty Policy?",
+            "answer": "<p>Motley products are made with the best engineering and materials available. All Motley frames are guaranteed against fault in manufacturing materials and workmanship. If your frames are damaged as a result of a manufacturing defect, we will gladly replace them at no extra charge. If the damage is not because of a manufacturing defect, please contact us at: Support@MotleyUSA.com, Motley will offer a replacement of the same or similar style at a reasonable charge.<br/><br/>ALL AUTHORIZED DEALERS (retail stores) will direct you to our website and our Customer Service Department. <br/><br/>IMPORTANT: Motley DOES NOT REPLACE OR WARRANTY SCRATCHED LENSES.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "category_bKBgVJ",
+        "question_hJqAGU",
+        "question_mRxzN7",
+        "question_CY8rgy",
+        "question_FpTib3",
+        "category_QjgAHA",
+        "question_38DDBX"
+      ],
+      "settings": {
+        "show_navigation": false,
+        "title": "FAQ",
+        "content": "",
+        "background": "rgba(0,0,0,0)",
+        "text_color": "rgba(0,0,0,0)"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_VGnUWw",
+    "faq_r3nwNG"
+  ]
+}

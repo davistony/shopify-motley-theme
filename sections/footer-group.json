@@ -1,0 +1,102 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "Footer group",
+  "sections": {
+    "text-with-icons": {
+      "type": "text-with-icons",
+      "blocks": {
+        "item-1": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-box",
+            "custom_icon_width": 50,
+            "title": "Free Returns",
+            "content": "<p>Stressed about changing your mind? Don't worry. With our 30-day, hassle-free return policy for U.S. orders, just send it back—no questions, no stress</p>"
+          }
+        },
+        "item-2": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-phone",
+            "custom_icon_width": 50,
+            "title": "Customer service",
+            "content": "<p>EMAIL: Support@MotleyUSA.Com<br/>TEL: 1-888-273-1664</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item-1",
+        "item-2"
+      ],
+      "settings": {
+        "background": "rgba(0,0,0,0)",
+        "text_color": "rgba(0,0,0,0)"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "reveal_on_scroll": true,
+        "image": "shopify://shop_images/motley-pattern-footer-2000x980.jpg",
+        "subheading": "Don't get picked last",
+        "content": "<p>Sign up for deals and fun.</p>",
+        "text_position": "right",
+        "text_alignment": "left",
+        "text_background": "rgba(0,0,0,0)",
+        "text_color": "rgba(0,0,0,0)",
+        "button_background": "rgba(0,0,0,0)",
+        "button_text_color": "rgba(0,0,0,0)"
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "text": {
+          "type": "text",
+          "settings": {
+            "title": "About Motley®",
+            "content": "<p>Motley Sunglasses— all gas, no brakes. Motley is here to embrace the ridiculous, disrupt the ordinary, and ball out in whatever your'e into.</p>"
+          }
+        },
+        "links": {
+          "type": "links",
+          "settings": {
+            "menu": "footer"
+          }
+        },
+        "social_media": {
+          "type": "social_media",
+          "settings": {
+            "title": "Follow us",
+            "content": "<p><a href=\"https://www.instagram.com/motleyusa\" title=\"https://www.instagram.com/motleyusa\">@MotleyUSA</a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "text",
+        "links",
+        "social_media"
+      ],
+      "settings": {
+        "show_payment_icons": false,
+        "enable_follow_on_shop": false,
+        "show_country_selector": false,
+        "show_locale_selector": false
+      }
+    }
+  },
+  "order": [
+    "text-with-icons",
+    "newsletter",
+    "footer"
+  ]
+}
