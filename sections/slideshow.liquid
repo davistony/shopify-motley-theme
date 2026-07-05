@@ -6,6 +6,13 @@
     background-color: {{ section.settings.background }}; /* Allows to set a placeholder color while loading */
   }
 
+  .slideshow__video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
   {%- for block in section.blocks -%}
     {%- assign text_position = block.settings.text_position | split: '_' | first -%}
 
@@ -44,8 +51,10 @@
         {%- assign image = block.settings.image -%}
         {%- assign split_image = block.settings.split_image -%}
         {%- assign mobile_image = block.settings.mobile_image -%}
+        {%- assign video = block.settings.video -%}
+        {%- assign mobile_video = block.settings.mobile_video -%}
 
-        {%- assign image_aspect_ratio = image.aspect_ratio | default: 2.63 -%}
+        {%- assign image_aspect_ratio = image.aspect_ratio | default: video.aspect_ratio | default: 2.63 -%}
 
         {%- comment -%}
         If the image is split and that we want to preserve the ratio, we have to multiply the ratio by 2 (as each image
@@ -63,8 +72,13 @@
         {%- endif -%}
 
         {%- capture slide_content -%}
-          <div class="slideshow__image-wrapper {% if mobile_image != blank %}hidden-pocket{% endif %}" {% if section.settings.transition_type == 'reveal' and section.settings.show_initial_transition or forloop.first == false %}reveal-visibility{% endif %}>
-            {%- if image != blank -%}
+          {%- assign has_mobile_media = false -%}
+          {%- if mobile_image != blank or mobile_video != blank -%}{%- assign has_mobile_media = true -%}{%- endif -%}
+
+          <div class="slideshow__image-wrapper {% if has_mobile_media %}hidden-pocket{% endif %}" {% if section.settings.transition_type == 'reveal' and section.settings.show_initial_transition or forloop.first == false %}reveal-visibility{% endif %}>
+            {%- if video != blank -%}
+              {{- video | video_tag: image_size: '2160x', autoplay: true, loop: true, muted: true, controls: false, preload: 'metadata', class: 'slideshow__image slideshow__video' -}}
+            {%- elsif image != blank -%}
               {%- capture sizes_attributes -%}{% if split_image != blank %}(min-width: 1000px) 50vw{% else %}100vw{% endif %}{%- endcapture -%}
               {{- image | image_url: width: 3000 | image_tag: loading: loading_attribute_value, draggable: false, class: 'slideshow__image', sizes: sizes_attributes, widths: '600,700,800,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000' -}}
             {%- else -%}
@@ -73,14 +87,18 @@
             {%- endif -%}
           </div>
 
-          {%- comment -%}If a second image (split image) is uploaded, we use it. Note that we use the same ratio as the first image (to have equal column height){% endcomment %}
-          {%- if image != blank and split_image != blank -%}
+          {%- comment -%}If a second image (split image) is uploaded, we use it. Note that we use the same ratio as the first image (to have equal column height). Skipped when a desktop video is set.{% endcomment %}
+          {%- if video == blank and image != blank and split_image != blank -%}
             <div class="slideshow__image-wrapper slideshow__image-wrapper--secondary hidden-pocket" {% if section.settings.transition_type == 'reveal' and section.settings.show_initial_transition or forloop.first == false %}reveal-visibility{% endif %}>
               {{- split_image | image_url: width: 3000 | image_tag: loading: loading_attribute_value, draggable: false, class: 'slideshow__image', sizes: '50vw', widths: '600,700,800,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000' -}}
             </div>
           {%- endif -%}
 
-          {%- if mobile_image != blank -%}
+          {%- if mobile_video != blank -%}
+            <div class="slideshow__image-wrapper hidden-lap-and-up" {% if section.settings.transition_type == 'reveal' and section.settings.show_initial_transition or forloop.first == false %}reveal-visibility{% endif %}>
+              {{- mobile_video | video_tag: image_size: '1400x', autoplay: true, loop: true, muted: true, controls: false, preload: 'metadata', class: 'slideshow__image slideshow__video' -}}
+            </div>
+          {%- elsif mobile_image != blank -%}
             <div class="slideshow__image-wrapper hidden-lap-and-up" {% if section.settings.transition_type == 'reveal' and section.settings.show_initial_transition or forloop.first == false %}reveal-visibility{% endif %}>
               {{- mobile_image | image_url: width: 3000 | image_tag: loading: loading_attribute_value, draggable: false, class: 'slideshow__image', sizes: '100vw', widths: '600,700,800,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000' -}}
             </div>
@@ -150,7 +168,7 @@
           class="slideshow__slide {% if split_image != blank %}slideshow__slide--split{% endif %} {% if section.settings.transition_type == 'sweep' %}slideshow__slide--sweep{% endif %}"
           {% unless forloop.first %}hidden{% endunless %}
           {% if section.settings.section_height == 'auto' %}
-            style="--image-aspect-ratio: {{ image_aspect_ratio }}; --mobile-image-aspect-ratio: {{ mobile_image.aspect_ratio | default: image_aspect_ratio | default: 1 }};"
+            style="--image-aspect-ratio: {{ image_aspect_ratio }}; --mobile-image-aspect-ratio: {{ mobile_image.aspect_ratio | default: mobile_video.aspect_ratio | default: image_aspect_ratio | default: 1 }};"
           {% endif %}
         {%- endcapture -%}
 
@@ -280,6 +298,12 @@
           "label": "Image"
         },
         {
+          "type": "video",
+          "id": "video",
+          "label": "Video (desktop)",
+          "info": "Overrides the desktop image when set. Autoplays muted and loops. Recommended 16:9 MP4."
+        },
+        {
           "type": "image_picker",
           "id": "split_image",
           "info": "1080 x 1080px .jpg recommended. Won't show up on mobile.",
@@ -290,6 +314,12 @@
           "id": "mobile_image",
           "label": "Mobile image",
           "info": "1000 x 1400px .jpg recommended. If none is set, desktop image will be used."
+        },
+        {
+          "type": "video",
+          "id": "mobile_video",
+          "label": "Video (mobile)",
+          "info": "Overrides the mobile image on phones when set. Autoplays muted and loops. Recommended 4:5 or 9:16 MP4."
         },
         {
           "type": "header",
